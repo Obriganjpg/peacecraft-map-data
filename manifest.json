@@ -1,0 +1,51 @@
+{
+  "project": "PEACECRAFT",
+  "purpose": "Base geographic layers for the 2022 campaign prototype",
+  "source": "Natural Earth 1:10m Cultural Vectors, version 5.1.1",
+  "source_urls": [
+    "https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-admin-0-countries/",
+    "https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-admin-1-states-provinces/"
+  ],
+  "license": "Natural Earth data is public domain; attribution is appreciated.",
+  "crs": "EPSG:4326 (WGS 84 longitude/latitude)",
+  "layers": {
+    "countries.geojson": {
+      "features": 258,
+      "primary_key": "country_id (Natural Earth ADM0_A3)",
+      "important_properties": [
+        "country_id",
+        "name",
+        "name_en",
+        "name_ru",
+        "sovereign",
+        "iso_a3",
+        "iso_a2",
+        "continent",
+        "region",
+        "subregion"
+      ]
+    },
+    "regions.geojson": {
+      "features": 4596,
+      "primary_key": "region_id (Natural Earth ADM1_CODE)",
+      "foreign_key": "country_id -> countries.country_id (Natural Earth adm0_a3)",
+      "important_properties": [
+        "region_id",
+        "country_id",
+        "country_name",
+        "name_en",
+        "name_ru",
+        "iso_3166_2",
+        "type_en",
+        "area_sqkm_source"
+      ]
+    }
+  },
+  "known_limitations": [
+    "These are general-purpose Natural Earth geographic boundaries, not a verified historical snapshot for every day of 2022.",
+    "Admin 1 is first-level administrative geography, not a uniform province/strategic-province system; subdivision detail varies by country.",
+    "Some disputed or dependent territories have source-specific representations. The game must store political control, claims, and recognition separately from geometry.",
+    "Natural Earth Admin 1 dataset is marked beta in its source documentation.",
+    "ISO_A3 may contain -99 for some entities; use country_id as the internal stable key within this dataset."
+  ]
+}
